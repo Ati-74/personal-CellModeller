@@ -1,0 +1,4 @@
+# configure ABC specific arguments
+number_of_particles = 8
+max_populations = 4
+epsilon = 1
