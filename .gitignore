@@ -1,6 +1,89 @@
 
 *.xml
 .idea/personal-CellModeller.iml
-*.pickle
 *.pyc
-**/temp/**
+**/data/**
+**/scripts/**
+ABC-SMC/unit test/diffusion rate/data/1X3WFY/1X3WFY
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/scripts/W9KAYK.py
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/scripts/W2M5BQ.py
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/scripts/UKLALY.py
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/scripts/QEBMDN.py
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/scripts/QD8Y49.py
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/scripts/Q2JPKE.py
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/scripts/PSLFY3.py
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/scripts/OHRD9U.py
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/scripts/N95UII.py
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/scripts/N8KP44.py
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/scripts/MTRYS6.py
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/scripts/MO0YZ6.py
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/scripts/KW5JFM.py
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/scripts/JKRBY9.py
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/scripts/IZC3VJ.py
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/scripts/H87PYA.py
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/scripts/GXSRNM.py
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/scripts/GBBVPH.py
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/scripts/F7GFH3.py
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/scripts/EEZ6O4.py
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/scripts/D75NP4.py
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/scripts/CXWY5Q.py
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/scripts/C3I7WO.py
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/scripts/B68OLN.py
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/scripts/9KTOS5.py
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/scripts/9DNAO9.py
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/scripts/94B3BQ.py
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/scripts/8FFNPP.py
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/scripts/7JSAFP.py
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/scripts/6P2TJC.py
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/scripts/6EHPPQ.py
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/scripts/0GG0KW.py
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/scripts/0EZVES.py
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/data/W9KAYK/W9KAYK
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/data/W2M5BQ/W2M5BQ
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/data/UKLALY/UKLALY
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/data/QEBMDN/QEBMDN
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/data/QD8Y49/QD8Y49
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/data/Q2JPKE/Q2JPKE
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/data/PSLFY3/PSLFY3
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/data/OHRD9U/OHRD9U
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/data/N95UII/N95UII
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/data/N8KP44/N8KP44
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/data/MTRYS6/MTRYS6
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/data/MO0YZ6/MO0YZ6
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/data/KW5JFM/KW5JFM
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/data/JKRBY9/JKRBY9
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/data/IZC3VJ/IZC3VJ
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/data/H87PYA/H87PYA
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/data/GXSRNM/GXSRNM
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/data/GBBVPH/GBBVPH
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/data/F7GFH3/F7GFH3
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/data/EEZ6O4/EEZ6O4
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/data/D75NP4/D75NP4
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/data/CXWY5Q/CXWY5Q
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/data/C3I7WO/C3I7WO
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/data/B68OLN/B68OLN
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/data/9KTOS5/9KTOS5
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/data/9DNAO9/9DNAO9
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/data/94B3BQ/94B3BQ
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/data/8FFNPP/8FFNPP
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/data/7JSAFP/7JSAFP
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/data/6P2TJC/6P2TJC
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/data/6EHPPQ/6EHPPQ
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/data/0GG0KW/0GG0KW
+ABC-SMC/unit test/mu/n_particles = 4, max_popu = 2, epsilon = 0.05/data/0EZVES/0EZVES
+ABC-SMC/unit test/diffusion rate/data/WPCUQY/WPCUQY
+ABC-SMC/unit test/diffusion rate/data/WIXS2B/WIXS2B
+ABC-SMC/unit test/diffusion rate/data/W89RJY/W89RJY
+ABC-SMC/unit test/diffusion rate/data/VDBF59/VDBF59
+ABC-SMC/unit test/diffusion rate/data/TEO8UW/TEO8UW
+ABC-SMC/unit test/diffusion rate/data/R8X3E5/R8X3E5
+ABC-SMC/unit test/diffusion rate/data/O72E71/O72E71
+ABC-SMC/unit test/diffusion rate/data/MS86FD/MS86FD
+ABC-SMC/unit test/diffusion rate/data/MFK3O1/MFK3O1
+ABC-SMC/unit test/diffusion rate/data/KR9TGT/KR9TGT
+ABC-SMC/unit test/diffusion rate/data/KFWPA5/KFWPA5
+ABC-SMC/unit test/diffusion rate/data/KBAELE/KBAELE
+ABC-SMC/unit test/diffusion rate/data/K479UG/K479UG
+ABC-SMC/unit test/diffusion rate/data/87EVA8/87EVA8
+ABC-SMC/unit test/diffusion rate/data/31LDB4/31LDB4
+*.iml
