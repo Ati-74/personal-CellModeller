@@ -20,9 +20,9 @@ from DataAnalysis import data_analysis
 
 def calc_sim_summary_statistics(pickle_directory):
 
-    cell_modeller_features = data_analysis(pickle_directory, summary_statistic_method_list, Exp_Sim_dt)
+    simulation_summary_statistics = data_analysis(pickle_directory, summary_statistic_method_list, Exp_Sim_dt)
 
-    return cell_modeller_features
+    return simulation_summary_statistics
 
 
 # distance_function
@@ -30,10 +30,13 @@ def distance_calculation(simulation_summary_statistics, exp_summary_statistics):
 
     distance_list = []
     for summary_statistic in simulation_summary_statistics.keys():
-        difference = np.abs(simulation_summary_statistics[summary_statistic] - exp_summary_statistics[summary_statistic])
+        difference = np.abs(simulation_summary_statistics[summary_statistic] -
+                            exp_summary_statistics[summary_statistic])
         distance_list.append(difference)
 
     distance = norm(distance_list)
+    print("#################### distance ####################")
+    print(distance)
 
     return distance
 
@@ -54,8 +57,7 @@ def abc_simulation(params):
     script_name = ''.join(
         random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(6))
     print(script_name)
-    parameter = ','.join([str(params[k]) for k in params])
-    simulation_script(script_name, str(parameter))
+    simulation_script(script_name, params)
 
     script_path = "scripts/" + script_name + ".py"
     simulate(script_path, 0, 0, script_name)
@@ -101,7 +103,7 @@ def running_abc(exp_data_directory, param_config, output_directory, n_particles,
     global Exp_Sim_dt
     global summary_statistic_method_list
 
-    #interval time
+    # interval time
     Exp_Sim_dt = dt
 
     # calculation of summary statistics for experimental data
