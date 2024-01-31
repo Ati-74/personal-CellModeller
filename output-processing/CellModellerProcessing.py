@@ -28,6 +28,7 @@ def extract_features(current_time_step, current_bacteria_info, previous_bacteria
             # parent information
             dataframe['TrackObjects_ParentImageNumber_50'].append(
                 dataframe['ImageNumber'][last_occurrence_index_in_list])
+
             dataframe['TrackObjects_ParentObjectNumber_50'].append(dataframe['ObjectNumber']
                                                                    [last_occurrence_index_in_list])
             # assign label
@@ -35,10 +36,12 @@ def extract_features(current_time_step, current_bacteria_info, previous_bacteria
 
         else:  # it means: A bacterium has been born or a cell division has taken place
             if current_time_step == 1:  # birth
+
                 if len(bacteria_id_label.values()) == 0:
                     this_bacterium_label = 1
                 else:
                     this_bacterium_label = max(bacteria_id_label.values()) + 1
+
                 # cell age
                 dataframe['CellAge'].append(0)
                 # parent information
@@ -65,24 +68,28 @@ def extract_features(current_time_step, current_bacteria_info, previous_bacteria
                                                                      previous_bacteria['lineage'].keys() if
                                                                      bacterium_id not in current_bacteria_info[
                                                                          'lineage'].values()]
-                        previous_bacteria_info = previous_bacteria['cellStates']
-                        # calculate distance
-                        distance = []
-                        for life_ended_bacteria_id in life_ended_bacteria_in_previous_time_step:
-                            this_bacterium_center = np.array((cs[it].pos[0], cs[it].pos[1]))
-                            life_ended_bacterium_in_previous_time_step = np.array(
-                                (previous_bacteria_info[life_ended_bacteria_id].pos[0],
-                                 previous_bacteria_info[life_ended_bacteria_id].pos[1]))
-                            # find distance
-                            distance_value = np.linalg.norm(
-                                this_bacterium_center - life_ended_bacterium_in_previous_time_step)
-                            distance.append(distance_value)
-                        # find the nearest grandmother bacterium
-                        grandmother_id = sorted(zip(distance, life_ended_bacteria_in_previous_time_step))[0][1]
-                        # assign label
-                        this_bacterium_label = bacteria_id_label[grandmother_id]
-                        last_occurrence_index_in_list = max(
-                            idx for idx, val in enumerate(dataframe['Id']) if val == grandmother_id)
+                        if len(life_ended_bacteria_in_previous_time_step) > 0:
+                            previous_bacteria_info = previous_bacteria['cellStates']
+                            # calculate distance
+                            distance = []
+                            for life_ended_bacteria_id in life_ended_bacteria_in_previous_time_step:
+                                this_bacterium_center = np.array((cs[it].pos[0], cs[it].pos[1]))
+                                life_ended_bacterium_in_previous_time_step = np.array(
+                                    (previous_bacteria_info[life_ended_bacteria_id].pos[0],
+                                     previous_bacteria_info[life_ended_bacteria_id].pos[1]))
+                                # find distance
+                                distance_value = np.linalg.norm(
+                                    this_bacterium_center - life_ended_bacterium_in_previous_time_step)
+                                distance.append(distance_value)
+                            # find the nearest grandmother bacterium
+                            grandmother_id = sorted(zip(distance, life_ended_bacteria_in_previous_time_step))[0][1]
+                            # assign label
+                            this_bacterium_label = bacteria_id_label[grandmother_id]
+                            last_occurrence_index_in_list = max(
+                                idx for idx, val in enumerate(dataframe['Id']) if val == grandmother_id)
+                        else:
+                            this_bacterium_label = max(bacteria_id_label.values()) + 1
+                            last_occurrence_index_in_list = -1
 
                 else:
                     '''
@@ -113,14 +120,22 @@ def extract_features(current_time_step, current_bacteria_info, previous_bacteria
                     last_occurrence_index_in_list = max(
                         idx for idx, val in enumerate(dataframe['Id']) if val == grandmother_id)
 
-                # cell age
-                dataframe['CellAge'].append(dataframe['CellAge'][last_occurrence_index_in_list] + 1)
+                if last_occurrence_index_in_list != -1:
+                    # cell age
+                    dataframe['CellAge'].append(dataframe['CellAge'][last_occurrence_index_in_list] + 1)
 
-                # parent information
-                dataframe['TrackObjects_ParentImageNumber_50'].append(
-                    dataframe['ImageNumber'][last_occurrence_index_in_list])
-                dataframe['TrackObjects_ParentObjectNumber_50'].append(dataframe['ObjectNumber']
-                                                                       [last_occurrence_index_in_list])
+                    # parent information
+                    dataframe['TrackObjects_ParentImageNumber_50'].append(
+                        dataframe['ImageNumber'][last_occurrence_index_in_list])
+                    dataframe['TrackObjects_ParentObjectNumber_50'].append(dataframe['ObjectNumber']
+                                                                           [last_occurrence_index_in_list])
+                else:
+                    # cell age
+                    dataframe['CellAge'].append(0)
+
+                    # parent information
+                    dataframe['TrackObjects_ParentImageNumber_50'].append(0)
+                    dataframe['TrackObjects_ParentObjectNumber_50'].append(0)
 
             # assign label
             dataframe["TrackObjects_Label_50"].append(this_bacterium_label)
