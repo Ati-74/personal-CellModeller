@@ -2,11 +2,13 @@ import math
 import numpy as np
 import pickle
 import CellModeller
+from neighborsFinding import neighbor_finders
 import pandas as pd
 import glob
 
 
-def extract_features(current_time_step, current_bacteria_info, previous_bacteria, dataframe, bacteria_id_label):
+def extract_features(current_time_step, current_bacteria_info, previous_bacteria, dataframe, bacteria_id_label,
+                     rows_neighbors):
     # bacteria information
     cs = current_bacteria_info['cellStates']
 
@@ -16,7 +18,11 @@ def extract_features(current_time_step, current_bacteria_info, previous_bacteria
     # 'cellStates' dictionary keys: bacteria id
     # 'lineage' dictionary: daughter id: parent id
 
-    for CellID, it in enumerate(cs.keys()):
+    for obj_num, it in enumerate(cs.keys()):
+        # find neighbors
+        for neighbor_id in current_bacteria_info['cellStates'][it].neighbours:
+            rows_neighbors.append((current_time_step, current_bacteria_info['cellStates'][it].id, neighbor_id))
+
         if cs[it].id in bacteria_id_label.keys():  # it means: Life has continued for bacterium
 
             # last occurrence of element in list
@@ -145,7 +151,7 @@ def extract_features(current_time_step, current_bacteria_info, previous_bacteria
         dataframe['Id'].append(cs[it].id)
         dataframe['ImageName'].append(current_bacteria_info['stepNum'])
         dataframe['ImageNumber'].append(current_time_step)
-        dataframe['ObjectNumber'].append(CellID + 1)
+        dataframe['ObjectNumber'].append(obj_num + 1)
 
         # cell Type
         # In CellModeller CellTypes are: 0,1,2,3,...
@@ -169,7 +175,7 @@ def extract_features(current_time_step, current_bacteria_info, previous_bacteria
         # S = 2πr(2r + a)
         dataframe['AreaShape_Area'].append(2 * math.pi * cs[it].radius * (cs[it].length + 2 * cs[it].radius))
 
-    return dataframe, bacteria_id_label
+    return dataframe, bacteria_id_label, rows_neighbors
 
 
 def starting_process(input_directory, cell_types, output_directory):
@@ -191,6 +197,8 @@ def starting_process(input_directory, cell_types, output_directory):
                  'AreaShape_MinorAxisLength': [], 'AreaShape_Orientation': [], 'Node_x1_x': [], 'Node_x1_y': [],
                  'Node_x2_x': [], 'Node_x2_y': [], 'CellAge': [], 'TrackObjects_ParentImageNumber_50': [],
                  'TrackObjects_ParentObjectNumber_50': [], 'validID': [], 'ImageName': [], 'TrackObjects_Label_50': []}
+
+    rows_neighbors = []
 
     # keys: bacteria id
     # values: assigned bacteria labels
@@ -216,8 +224,9 @@ def starting_process(input_directory, cell_types, output_directory):
             previous_bacteria = ''
 
         # extract features
-        dataframe, bacteria_id_label = extract_features(time_step, current_bacteria_info, previous_bacteria,
-                                                        dataframe, bacteria_id_label)
+        dataframe, bacteria_id_label, rows_neighbors = \
+            extract_features(time_step, current_bacteria_info, previous_bacteria, dataframe, bacteria_id_label,
+                             rows_neighbors)
 
     # create data frame
     df = pd.DataFrame({'Id': dataframe['Id'], 'ImageName': dataframe['ImageName'],
@@ -243,4 +252,32 @@ def starting_process(input_directory, cell_types, output_directory):
         column_num += 1
 
     # write to csv
-    df.to_csv(output_directory + "result.csv", index=False)
+    df.to_csv(output_directory + "/Objects properties.csv", index=False)
+
+    # now we should check dataframes
+    if len(rows_neighbors) == 0:
+        # This means that the neighbors were not found in the CellModeler
+        print('Finding Neighbors')
+        df_neighbors = neighbor_finders(input_directory)
+    else:
+        df_neighbors = pd.DataFrame(rows_neighbors, columns=['Image Number', 'First Object id',
+                                                             'Second Object id'])
+
+    df_merge = df_neighbors.merge(df, left_on=['Image Number', 'First Object id'],
+                                  right_on=['ImageNumber', 'Id'], how='inner', suffixes=('_node', '_info'))
+
+    df_final_merge = df_merge.merge(df, left_on=['Image Number', 'Second Object id'],
+                                    right_on=['ImageNumber', 'Id'], how='inner',
+                                    suffixes=('_node_info', '_neighbor_info'))
+
+    findl_df_neighbors = \
+        df_final_merge[['Image Number', 'ObjectNumber_node_info', 'ObjectNumber_neighbor_info']].copy()
+
+    findl_df_neighbors = findl_df_neighbors.rename({'Image Number': 'First Image Number',
+                                                    'ObjectNumber_node_info': 'First Object Number',
+                                                    'ObjectNumber_neighbor_info': 'Second Object Number'}, axis=1)
+
+    findl_df_neighbors.insert(0, 'Relationship', 'Neighbors')
+    findl_df_neighbors.insert(3, 'Second Image Number', findl_df_neighbors['First Image Number'].values)
+
+    findl_df_neighbors.to_csv(output_directory + "/Object relationships.csv", index=False)
