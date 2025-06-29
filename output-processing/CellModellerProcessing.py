@@ -359,16 +359,6 @@ def process_simulation_directory(input_directory, cell_type_mapping, output_dire
         If True, approximates the parent bacterium by selecting the nearest disappeared bacterium
         from the previous time step. Useful when large time step gaps cause the actual parent
         to no longer appear in the previous step.
-    - enable_post_processing (bool):
-        If True, perform additional calculations after feature extraction, such as unit conversion
-        and proximity-based aggregation (via `calc_aggregate_proximity`) (default=True).
-        Useful for preparing data for downstream analysis or visualization.
-    - interval_time (float or None):
-        Time (in minutes or another unit) between simulation steps. Required only if `do_post_processing` is True
-        and proximity or time-based metrics need to be computed.
-    - pixel_per_micron (float):
-        Conversion factor from pixels to microns. Used for converting spatial coordinates and dimensions
-        into real-world units during post-processing. (default: 0.144)
 
     Returns:
     - None. Writes two CSV files to the output directory:
