@@ -400,18 +400,9 @@ def propagate_bacteria_labels(df, parent_image_number_col, parent_object_number_
 
             this_bac_label = source_link[label_col]
 
-            if str(source_link[label_col]) == 'nan':
-                print(source_link)
-                print('zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz')
-                breakpoint()
-
         else:
 
             this_bac_label = same_bac_dict[f'{int(parent_img_num)}_{int(parent_obj_num)}']
-            if str(this_bac_label) == 'nan':
-                print(f'{int(parent_img_num)}_{int(parent_obj_num)}')
-                print('xxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
-                breakpoint()
 
         label_list.append(this_bac_label)
 
